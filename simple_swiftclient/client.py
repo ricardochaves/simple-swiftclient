@@ -37,7 +37,7 @@ class Client(object):
             }
         })
 
-        url = '{}/tokens'.format(self.auth_url)
+        url = '{0}/tokens'.format(self.auth_url)
 
         req = urllib2.Request(url, data, {'Content-Type': 'application/json'})
         conn = urllib2.urlopen(req)
@@ -76,9 +76,9 @@ class Client(object):
 
             (fh, content_type, content_length) = utils.get_file_infos(filename)
 
-            url = "{}/{}/{}".format(self.get_storage_url(),
-                                    container,
-                                    filename)
+            url = "{0}/{1}/{2}".format(self.get_storage_url(),
+                                       container,
+                                       filename)
 
             data = fh.read()
 
@@ -94,9 +94,9 @@ class Client(object):
             response = urllib2.urlopen(request)
 
             if response.code == 201:
-                msg = '{} - OK'.format(filename)
+                msg = '{0} - OK'.format(filename)
             else:
-                msg = '{} - FAIL (error {})'.format(filename, response.code)
+                msg = '{0} - FAIL (error {1})'.format(filename, response.code)
 
             if verbose:
                 print(msg)
